@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { mainLayout } from './components';
+import { MainLayout } from './components';
 
 function App() {
   return (
     <div className="App">
-      <mainLayout/>
+      <MainLayout/>
     </div>
   );
 }
