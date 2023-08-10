@@ -18,7 +18,7 @@ function MainLayout(){
     function renderLight(){
         return (
             <div className="mainLight">
-                <Header theme={theme}/>
+                <Header theme={theme} onTheme={onThemeChange}/>
             </div>
         )
         
@@ -31,6 +31,7 @@ function MainLayout(){
             </div>
         )
     }
+    
 
     if(theme === 'light'){
         return renderLight();
