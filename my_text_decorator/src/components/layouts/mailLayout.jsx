@@ -13,6 +13,17 @@ function MainLayout(){
     const [editorMode, setEditorMode] = useState('Quil');
     const [editorVal, setEditorVal] = useState('');
 
+    const modules = {
+        toolbar: [
+            [{'header': [1, 2, false]}],
+            ['bold', 'italic', 'underline', 'strike', 'blokquote'],
+            [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+            ['clean']
+        ],
+    };
+
+    const formats = ['header', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'indent'];
+
     function onThemeChange(){
         if (theme === 'light'){
             setTheme('dark');
@@ -40,15 +51,37 @@ function MainLayout(){
                 <Header theme={theme} onTheme={onThemeChange}/>
                 <div className="container">
                     <Switcher theme={theme} onChangeMode={setEditorMode}/>
+                    {renderEditor()}
                 </div>
             </div>
         )
     }
 
+    function getQillTheme(){
+        if (theme === 'light'){
+            return (
+                {
+                    height: '500px',                
+                }
+            )
+        }else{
+            return (
+                {
+                    height: '500px',
+                    backgroundColor: '#222225',
+                    border: '1px solid #717183',
+                    color: '#D9D9D9'
+                }
+            )
+        }
+    }
+
     function renderEditor(){
         if (editorMode === 'Quil'){
             return (
-                <ReactQuill theme='snow' value={editorVal} onChange={setEditorVal} placeholder="Enter your text here and stylize it"/>
+                <ReactQuill theme='snow' value={editorVal} onChange={setEditorVal} placeholder="Enter your text here and stylize it" modules={modules} formats={formats}
+                    style={getQillTheme()}
+                />
             )
         }else{
             return (
