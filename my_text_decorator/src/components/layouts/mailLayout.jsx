@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
 import { Header } from "../header";
+import { Switcher } from "../switcher";
 
 import './layouts.css';
 
 function MainLayout(){
     const [theme, setTheme] = useState('light');
+    const [editorMode, setEditorMode] = useState('Quil');
 
     function onThemeChange(){
         if (theme === 'light'){
@@ -19,6 +21,9 @@ function MainLayout(){
         return (
             <div className="mainLight">
                 <Header theme={theme} onTheme={onThemeChange}/>
+                <div className="container">
+                    <Switcher theme={theme} onChangeMode={setEditorMode}/>
+                </div>
             </div>
         )
         
@@ -28,6 +33,9 @@ function MainLayout(){
         return (
             <div className="mainDark">
                 <Header theme={theme} onTheme={onThemeChange}/>
+                <div className="container">
+                    <Switcher theme={theme} onChangeMode={setEditorMode}/>
+                </div>
             </div>
         )
     }

@@ -1,7 +1,5 @@
 .switcher{
-    min-width: 600px;
-    height: 80px;
-    width: 60%;
+    height: 50px;
 }
 
 .leftButton{
@@ -18,18 +16,21 @@
 
 .lightActiveButton{
     background-color: #CEC7F9;
+    height: 50px;
+    margin-top: -20px;
 }
 
 .lightPassiveButton{
     background-color: #F8F8F8;
     border: 1px solid #D9D9D9;
+    height: 50px;
 }
 
 .lightActiveText{
     color: #FCFAFF;
     text-align: center;
     font-family: Inter;
-    font-size: 36px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 600;
     margin-left: 20%;
@@ -41,28 +42,31 @@
     color: #9A9A9A;
     text-align: center;
     font-family: Inter;
-    font-size: 36px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 600;
     margin-left: 20%;
     margin-right: 20%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .darkActiveButton{
     background-color: #717183;
+    height: 50px;
+    margin-top: -20px;
 }
 
 .darkPassiveButton{
     background-color: #44444A;
     border: 1px solid #D9D9D9;
+    height: 50px;
 }
 
 .darkActiveText{
     color: #FCFAFF;
     text-align: center;
     font-family: Inter;
-    font-size: 36px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 600;
     margin-left: 20%;
@@ -74,10 +78,10 @@
     color: #9A9A9A;
     text-align: center;
     font-family: Inter;
-    font-size: 36px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 600;
     margin-left: 20%;
     margin-right: 20%;
-    margin-top: 20px;
+    margin-top: 10px;
 }

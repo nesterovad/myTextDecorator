@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import './switcher.css';
 
-function Switcher(){
+function Switcher(props){
     const [selected, setSelected] = useState('Quil');
 
     function renderSwitcher(theme, onChangeMode){
