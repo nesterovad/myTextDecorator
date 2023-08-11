@@ -1,0 +1,24 @@
+.lightButton{
+    width: 150px;
+    height: 30px;
+    border: 1px solid #EBEBEC;
+}
+
+.darkButton{
+    width: 150px;
+    height: 30px;
+    background-color: #CEC7F9;
+    border: 1px solid #EBEBEC;
+}
+
+.label{
+    color: #6B6B6D;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5px;
+}
