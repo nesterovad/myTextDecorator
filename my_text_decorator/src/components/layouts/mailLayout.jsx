@@ -5,6 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 import { Header } from "../header";
 import { Switcher } from "../switcher";
 import { CustomTextEditor } from "../customTextEditor";
+import { Button } from "../button";
 
 import './layouts.css';
 
@@ -12,6 +13,7 @@ function MainLayout(){
     const [theme, setTheme] = useState('light');
     const [editorMode, setEditorMode] = useState('Quil');
     const [editorVal, setEditorVal] = useState('');
+    const [showingText, setShowingText] = useState(false);
 
     const modules = {
         toolbar: [
@@ -32,6 +34,18 @@ function MainLayout(){
         }
     }
 
+    function onAutostyle(){
+
+    }
+
+    function onShow(){
+        setShowingText(true);
+    }
+
+    function onExport(){
+
+    }
+
     function renderLight(){
         return (
             <div className="mainLight">
@@ -39,6 +53,19 @@ function MainLayout(){
                 <div className="container">
                     <Switcher theme={theme} onChangeMode={setEditorMode}/>
                     {renderEditor()}
+                    <div className="buttonBlock">
+                        <div style={{float: "left"}}>
+                            <Button theme={theme} action={onAutostyle} text='Autostyle'/>
+                        </div>
+                        <div style={{float: "left"}}>
+                            <Button theme={theme} action={onShow} text='Show'/>
+                        </div>
+                        <div style={{float: "right"}}>
+                            <Button theme={theme} action={onExport} text='Export in txt'/>
+                        </div>
+                        
+                    </div>
+                    {renderText()}
                 </div>
             </div>
         )
@@ -52,6 +79,18 @@ function MainLayout(){
                 <div className="container">
                     <Switcher theme={theme} onChangeMode={setEditorMode}/>
                     {renderEditor()}
+                    <div className="buttonBlock">
+                    <div style={{float: "left"}}>
+                            <Button theme={theme} action={onAutostyle} text='Autostyle'/>
+                        </div>
+                        <div style={{float: "left"}}>
+                            <Button theme={theme} action={onShow} text='Show'/>
+                        </div>
+                        <div style={{float: "right"}}>
+                            <Button theme={theme} action={onExport} text='Export in txt'/>
+                        </div>
+                    </div>
+                    {renderText()}
                 </div>
             </div>
         )
@@ -88,6 +127,18 @@ function MainLayout(){
                 <CustomTextEditor theme={theme} onChangeText={setEditorVal}/>
             )
         }
+    }
+
+    function renderText(){
+        if (showingText)
+            return (
+                    <div>
+                        <p style={{color: '#9A9A9A'}}>
+                            {editorVal}
+                        </p>
+                        
+                    </div>
+                )
     }
     
 

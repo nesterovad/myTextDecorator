@@ -12,8 +12,13 @@
 
 .container{
     margin-top: 20px;
-    min-width: 600px;
+    min-height: 665px;
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
+}
+
+.buttonBlock{
+    margin-left: 40%;
+    margin-top: 50px;
 }
