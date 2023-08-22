@@ -1,0 +1,19 @@
+.textEditor{
+    height: 500px;
+}
+
+.textEditorHeader{
+    height: 20px;
+}
+
+.editorField{
+    resize: none;
+    width: 100%;
+    height: 480px;
+}
+
+.editorButton{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #717183;
+}
