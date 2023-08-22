@@ -3,7 +3,8 @@
 }
 
 .textEditorHeader{
-    height: 20px;
+    height: 30px;
+    width: 400px;
 }
 
 .editorField{
@@ -13,7 +14,8 @@
 }
 
 .editorButton{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border: 1px solid #717183;
+    float: left;
 }
