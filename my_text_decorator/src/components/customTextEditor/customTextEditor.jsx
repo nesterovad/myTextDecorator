@@ -64,52 +64,110 @@ function CustomTextEditor(props){
 
     }
 
+    function renderThemedEditor(){
+        if (props.theme === 'light') {
+            return renderLidhtEditor();
+        }else return renderDarkEditor();
+    }
+
+    function renderLidhtEditor(){
+        return (
+            <div className="textEditorLight">
+                <div className="textEditorHeader">
+                    <TextEditorButton onClick={onBold} >
+                        <FormatBoldIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onItalic} >
+                        <FormatItalicIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onUnderlined} >
+                        <FormatUnderlinedIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onCrossed} >
+                        <FormatStrikethroughIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onHeader} >
+                        <FormatSizeIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onList} >
+                        <FormatListBulletedIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onOrder} >
+                        <FormatListNumberedIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onAddIndent}>
+                        <FormatIndentIncreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onDeleteIndent}>
+                        <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+                </div>
+                <textarea className="editorField" placeholder="Enter your text here and stylize it">
+
+                </textarea>
+            </div>
+        )
+    }
+
+    function renderDarkEditor(){
+        return (
+            <div className="textEditorDark">
+                <div className="textEditorHeader">
+                    <TextEditorButton onClick={onBold} >
+                        <FormatBoldIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onItalic} >
+                        <FormatItalicIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onUnderlined} >
+                        <FormatUnderlinedIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onCrossed} >
+                        <FormatStrikethroughIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onHeader} >
+                        <FormatSizeIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onList} >
+                        <FormatListBulletedIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onOrder} >
+                        <FormatListNumberedIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onAddIndent}>
+                        <FormatIndentIncreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onDeleteIndent}>
+                        <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+                </div>
+                <textarea className="editorFieldDark" placeholder="Enter your text here and stylize it">
+
+                </textarea>
+            </div>
+        )
+    }
+
     
 
-    return (
-        <div className="textEditor">
-            <div className="textEditorHeader">
-                <TextEditorButton onClick={onBold} >
-                    <FormatBoldIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-
-                <TextEditorButton onClick={onItalic} >
-                    <FormatItalicIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-
-                <TextEditorButton onClick={onUnderlined} >
-                    <FormatUnderlinedIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-
-                <TextEditorButton onClick={onCrossed} >
-                    <FormatStrikethroughIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-
-                <TextEditorButton onClick={onHeader} >
-                    <FormatSizeIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-
-                <TextEditorButton onClick={onList} >
-                    <FormatListBulletedIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-
-                <TextEditorButton onClick={onOrder} >
-                    <FormatListNumberedIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-
-                <TextEditorButton onClick={onAddIndent}>
-                    <FormatIndentIncreaseIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-
-                <TextEditorButton onClick={onDeleteIndent}>
-                    <FormatIndentDecreaseIcon sx={{fontSize: '30px'}}/>
-                </TextEditorButton>
-            </div>
-            <textarea className="editorField" placeholder="Enter your text here and stylize it">
-
-            </textarea>
-        </div>
-    )
+    return renderThemedEditor();
+    
 }
 
 export default CustomTextEditor;

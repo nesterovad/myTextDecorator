@@ -1,5 +1,10 @@
-.textEditor{
+.textEditorLight{
     height: 500px;
+}
+
+.textEditorDark{
+    height: 500px;
+    background-color: #222225;
 }
 
 .textEditorHeader{
@@ -11,6 +16,13 @@
     resize: none;
     width: 100%;
     height: 480px;
+}
+
+.editorFieldDark{
+    resize: none;
+    width: 100%;
+    height: 480px;
+    background-color: #222225;
 }
 
 .editorButton{
