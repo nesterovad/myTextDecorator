@@ -13,6 +13,8 @@ import FormatIndentDecreaseIcon from '@mui/icons-material/FormatIndentDecrease';
 import './customTextEditor.css';
 import TextEditorButton from "./textEditorButton";
 
+import * as Tags from "../../consts";
+
 
 function CustomTextEditor(props){
 /*TODO:
@@ -23,17 +25,12 @@ function CustomTextEditor(props){
 */
     const [val, setVal] = useState('');
     const myref = React.createRef();
-    const [start, setStart] = useState();
-    const [end, setEnd] = useState();
 
     function getSelectedText(){
         let textval = myref.current;
         let start = textval.selectionStart;
         let end = textval.selectionEnd;
-        setStart(start);
-        setEnd(end);
-        let selectedText = val.substring(start, end);
-        console.log(selectedText);
+       return [start, end];
     }
 
     function onChange(e){
@@ -42,20 +39,32 @@ function CustomTextEditor(props){
     }
 
     function onBold(){
-        getSelectedText();
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + Tags.boldOpen + val.substring(start, end) + Tags.boldClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(val);
         
     }
     
     function onItalic(){
-
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + Tags.italicOpen + val.substring(start, end) + Tags.italicClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(val);
     }
 
     function onUnderlined(){
-
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + Tags.underlineOpen + val.substring(start, end) + Tags.underlineClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(val);
     }
 
     function onCrossed(){
-
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + Tags.crossOpen + val.substring(start, end) + Tags.crossClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(val);
     }
 
     function onHeader(){
