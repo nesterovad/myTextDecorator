@@ -16,20 +16,34 @@ import TextEditorButton from "./textEditorButton";
 
 function CustomTextEditor(props){
 /*TODO:
-1. сверстать поле для ввода текста (кнопки стилизации жирный, курсив, заголовок, подчеркнутый, зачеркнутый, списки, отступы, ввод на основе textarea) (in progress)
+1. сверстать поле для ввода текста (кнопки стилизации жирный, курсив, заголовок, подчеркнутый, зачеркнутый, списки, отступы, ввод на основе textarea) (done)
 2. реализовать получение выделенного фрагмента
 3. для каждой кнопки реализовать оборачивание в соответствующий тег
 4. добавить замену переноса строки на <br>
 */
     const [val, setVal] = useState('');
+    const myref = React.createRef();
+    const [start, setStart] = useState();
+    const [end, setEnd] = useState();
 
-    function onChange(val){
-        setVal(val);
+    function getSelectedText(){
+        let textval = myref.current;
+        let start = textval.selectionStart;
+        let end = textval.selectionEnd;
+        setStart(start);
+        setEnd(end);
+        let selectedText = val.substring(start, end);
+        console.log(selectedText);
+    }
+
+    function onChange(e){
+        setVal(e.target.value);
         props.onChange(val);
     }
 
     function onBold(){
-
+        getSelectedText();
+        
     }
     
     function onItalic(){
@@ -110,7 +124,7 @@ function CustomTextEditor(props){
                         <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
                     </TextEditorButton>
                 </div>
-                <textarea className="editorField" placeholder="Enter your text here and stylize it">
+                <textarea className="editorField" placeholder="Enter your text here and stylize it" ref={myref} onChange={onChange} value={val}>
 
                 </textarea>
             </div>

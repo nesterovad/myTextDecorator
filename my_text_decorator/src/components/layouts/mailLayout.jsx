@@ -124,7 +124,7 @@ function MainLayout(){
             )
         }else{
             return (
-                <CustomTextEditor theme={theme} onChangeText={setEditorVal}/>
+                <CustomTextEditor theme={theme} onChange={setEditorVal}/>
             )
         }
     }
