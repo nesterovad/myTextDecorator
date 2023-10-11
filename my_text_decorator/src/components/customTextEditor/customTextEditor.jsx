@@ -94,7 +94,17 @@ function CustomTextEditor(props){
     }
 
     function onList(){
-
+        let [start, end] = getSelectedText();
+        let parsedText = val.substring(start, end).split(/\r?\n/);
+        let items = '';
+        parsedText.forEach(function (item) {
+            if(item){
+            items = items + Tags.listItemOpen + item + Tags.listItemClose;
+            }
+        });
+        let editedText = val.substring(0, start) + Tags.listOpen + items + Tags.listClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
     }
 
     function onOrder(){
