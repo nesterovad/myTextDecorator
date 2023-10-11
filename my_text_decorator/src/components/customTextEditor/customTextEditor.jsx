@@ -9,6 +9,9 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import FormatIndentIncreaseIcon from '@mui/icons-material/FormatIndentIncrease';
 import FormatIndentDecreaseIcon from '@mui/icons-material/FormatIndentDecrease';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
 
 import './customTextEditor.css';
 import TextEditorButton from "./textEditorButton";
@@ -17,12 +20,6 @@ import * as Tags from "../../consts";
 
 
 function CustomTextEditor(props){
-/*TODO:
-1. сверстать поле для ввода текста (кнопки стилизации жирный, курсив, заголовок, подчеркнутый, зачеркнутый, списки, отступы, ввод на основе textarea) (done)
-2. реализовать получение выделенного фрагмента
-3. для каждой кнопки реализовать оборачивание в соответствующий тег
-4. добавить замену переноса строки на <br>
-*/
     const [val, setVal] = useState('');
     const myref = React.createRef();
 
@@ -42,7 +39,7 @@ function CustomTextEditor(props){
         let [start, end] = getSelectedText();
         let editedText = val.substring(0, start) + Tags.boldOpen + val.substring(start, end) + Tags.boldClose + val.substring(end);
         setVal(editedText);
-        props.onChange(val);
+        props.onChange(editedText);
         
     }
     
@@ -50,33 +47,79 @@ function CustomTextEditor(props){
         let [start, end] = getSelectedText();
         let editedText = val.substring(0, start) + Tags.italicOpen + val.substring(start, end) + Tags.italicClose + val.substring(end);
         setVal(editedText);
-        props.onChange(val);
+        props.onChange(editedText);
     }
 
     function onUnderlined(){
         let [start, end] = getSelectedText();
         let editedText = val.substring(0, start) + Tags.underlineOpen + val.substring(start, end) + Tags.underlineClose + val.substring(end);
         setVal(editedText);
-        props.onChange(val);
+        props.onChange(editedText);
     }
 
     function onCrossed(){
         let [start, end] = getSelectedText();
         let editedText = val.substring(0, start) + Tags.crossOpen + val.substring(start, end) + Tags.crossClose + val.substring(end);
         setVal(editedText);
-        props.onChange(val);
+        props.onChange(editedText);
     }
 
     function onHeader(){
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + Tags.headerOpen + val.substring(start, end) + Tags.headerClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
 
+    }
+
+    function onCenter(){
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + Tags.centerOpen + val.substring(start, end) + Tags.centerClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
+    }
+
+    function onRight(){
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + '<p align="right">' + val.substring(start, end) + '</p>' + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
+
+    }
+
+    function onLeft(){
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + '<p align="left">' + val.substring(start, end) + '</p>' + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
     }
 
     function onList(){
-
+        let [start, end] = getSelectedText();
+        let parsedText = val.substring(start, end).split(/\r?\n/);
+        let items = '';
+        parsedText.forEach(function (item) {
+            if(item){
+            items = items + Tags.listItemOpen + item + Tags.listItemClose;
+            }
+        });
+        let editedText = val.substring(0, start) + Tags.listOpen + items + Tags.listClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
     }
 
     function onOrder(){
-
+        let [start, end] = getSelectedText();
+        let parsedText = val.substring(start, end).split(/\r?\n/);
+        let items = '';
+        parsedText.forEach(function (item) {
+            if(item){
+            items = items + Tags.listItemOpen + item + Tags.listItemClose;
+            }
+        });
+        let editedText = val.substring(0, start) + Tags.orderOpen + items + Tags.orderClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
     }
 
     function onAddIndent(){
@@ -132,6 +175,18 @@ function CustomTextEditor(props){
                     <TextEditorButton onClick={onDeleteIndent}>
                         <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
                     </TextEditorButton>
+
+                    <TextEditorButton onClick={onLeft}>
+                        <FormatAlignLeftIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onCenter}>
+                        <FormatAlignCenterIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8" />
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onRight}>
+                        <FormatAlignRightIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8" />
+                    </TextEditorButton>
                 </div>
                 <textarea className="editorField" placeholder="Enter your text here and stylize it" ref={myref} onChange={onChange} value={val}>
 
@@ -178,6 +233,18 @@ function CustomTextEditor(props){
 
                     <TextEditorButton onClick={onDeleteIndent}>
                         <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onLeft}>
+                        <FormatAlignLeftIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onCenter}>
+                        <FormatAlignCenterIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8" />
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onRight}>
+                        <FormatAlignRightIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8" />
                     </TextEditorButton>
                 </div>
                 <textarea className="editorFieldDark" placeholder="Enter your text here and stylize it">

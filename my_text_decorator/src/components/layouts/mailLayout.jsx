@@ -35,7 +35,9 @@ function MainLayout(){
     }
 
     function onAutostyle(){
-
+        let stylised = editorVal.replace(' - ', ' — ');
+        stylised = stylised.replace(/\r?\n/, '<br>');
+        setEditorVal(stylised);
     }
 
     function onShow(){
