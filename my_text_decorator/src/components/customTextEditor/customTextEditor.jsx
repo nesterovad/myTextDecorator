@@ -20,12 +20,6 @@ import * as Tags from "../../consts";
 
 
 function CustomTextEditor(props){
-/*TODO:
-1. сверстать поле для ввода текста (кнопки стилизации жирный, курсив, заголовок, подчеркнутый, зачеркнутый, списки, отступы, ввод на основе textarea) (done)
-2. реализовать получение выделенного фрагмента
-3. для каждой кнопки реализовать оборачивание в соответствующий тег
-4. добавить замену переноса строки на <br>
-*/
     const [val, setVal] = useState('');
     const myref = React.createRef();
 
@@ -86,11 +80,18 @@ function CustomTextEditor(props){
     }
 
     function onRight(){
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + '<p align="right">' + val.substring(start, end) + '</p>' + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
 
     }
 
     function onLeft(){
-
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + '<p align="left">' + val.substring(start, end) + '</p>' + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
     }
 
     function onList(){
