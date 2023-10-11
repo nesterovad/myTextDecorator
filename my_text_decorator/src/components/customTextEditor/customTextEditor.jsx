@@ -234,6 +234,18 @@ function CustomTextEditor(props){
                     <TextEditorButton onClick={onDeleteIndent}>
                         <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
                     </TextEditorButton>
+
+                    <TextEditorButton onClick={onLeft}>
+                        <FormatAlignLeftIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onCenter}>
+                        <FormatAlignCenterIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8" />
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onRight}>
+                        <FormatAlignRightIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8" />
+                    </TextEditorButton>
                 </div>
                 <textarea className="editorFieldDark" placeholder="Enter your text here and stylize it">
 
