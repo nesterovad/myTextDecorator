@@ -9,6 +9,9 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import FormatIndentIncreaseIcon from '@mui/icons-material/FormatIndentIncrease';
 import FormatIndentDecreaseIcon from '@mui/icons-material/FormatIndentDecrease';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
 
 import './customTextEditor.css';
 import TextEditorButton from "./textEditorButton";
@@ -68,6 +71,18 @@ function CustomTextEditor(props){
     }
 
     function onHeader(){
+
+    }
+
+    function onCenter(){
+
+    }
+
+    function onRight(){
+
+    }
+
+    function onLeft(){
 
     }
 
@@ -131,6 +146,18 @@ function CustomTextEditor(props){
 
                     <TextEditorButton onClick={onDeleteIndent}>
                         <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onLeft}>
+                        <FormatAlignLeftIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onCenter}>
+                        <FormatAlignCenterIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8" />
+                    </TextEditorButton>
+
+                    <TextEditorButton onClick={onRight}>
+                        <FormatAlignRightIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8" />
                     </TextEditorButton>
                 </div>
                 <textarea className="editorField" placeholder="Enter your text here and stylize it" ref={myref} onChange={onChange} value={val}>
