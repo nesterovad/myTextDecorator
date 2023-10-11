@@ -108,7 +108,17 @@ function CustomTextEditor(props){
     }
 
     function onOrder(){
-
+        let [start, end] = getSelectedText();
+        let parsedText = val.substring(start, end).split(/\r?\n/);
+        let items = '';
+        parsedText.forEach(function (item) {
+            if(item){
+            items = items + Tags.listItemOpen + item + Tags.listItemClose;
+            }
+        });
+        let editedText = val.substring(0, start) + Tags.orderOpen + items + Tags.orderClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
     }
 
     function onAddIndent(){
