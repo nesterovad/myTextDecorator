@@ -45,7 +45,7 @@ function CustomTextEditor(props){
         let [start, end] = getSelectedText();
         let editedText = val.substring(0, start) + Tags.boldOpen + val.substring(start, end) + Tags.boldClose + val.substring(end);
         setVal(editedText);
-        props.onChange(val);
+        props.onChange(editedText);
         
     }
     
@@ -53,24 +53,28 @@ function CustomTextEditor(props){
         let [start, end] = getSelectedText();
         let editedText = val.substring(0, start) + Tags.italicOpen + val.substring(start, end) + Tags.italicClose + val.substring(end);
         setVal(editedText);
-        props.onChange(val);
+        props.onChange(editedText);
     }
 
     function onUnderlined(){
         let [start, end] = getSelectedText();
         let editedText = val.substring(0, start) + Tags.underlineOpen + val.substring(start, end) + Tags.underlineClose + val.substring(end);
         setVal(editedText);
-        props.onChange(val);
+        props.onChange(editedText);
     }
 
     function onCrossed(){
         let [start, end] = getSelectedText();
         let editedText = val.substring(0, start) + Tags.crossOpen + val.substring(start, end) + Tags.crossClose + val.substring(end);
         setVal(editedText);
-        props.onChange(val);
+        props.onChange(editedText);
     }
 
     function onHeader(){
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + Tags.headerOpen + val.substring(start, end) + Tags.headerClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
 
     }
 
