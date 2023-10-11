@@ -79,7 +79,10 @@ function CustomTextEditor(props){
     }
 
     function onCenter(){
-
+        let [start, end] = getSelectedText();
+        let editedText = val.substring(0, start) + Tags.centerOpen + val.substring(start, end) + Tags.centerClose + val.substring(end);
+        setVal(editedText);
+        props.onChange(editedText);
     }
 
     function onRight(){
