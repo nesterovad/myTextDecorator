@@ -45,7 +45,12 @@ function MainLayout(){
     }
 
     function onExport(){
-
+        const blob = new Blob([editorVal], {type: "text/plain"});
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.download = "your-text.txt";
+        link.href = url;
+        link.click();
     }
 
     function renderLight(){
