@@ -35,63 +35,51 @@ function CustomTextEditor(props){
         props.onChange(val);
     }
 
-    function onBold(){
+    function onClick(openTag, closeTag){
         let [start, end] = getSelectedText();
-        let editedText = val.substring(0, start) + Tags.boldOpen + val.substring(start, end) + Tags.boldClose + val.substring(end);
+        let editedText;
+        if (val.substring(start, start + openTag.length) === openTag){
+            editedText = val.substring(0, start) + val.substring(start, end).replace(openTag, '').replace(closeTag, '') + val.substring(end);
+        }else{
+            editedText = val.substring(0, start) + openTag + val.substring(start, end) + closeTag + val.substring(end);
+        }
         setVal(editedText);
         props.onChange(editedText);
+    }
+
+    function onBold(){
+       onClick(Tags.boldOpen, Tags.boldClose);
         
     }
     
     function onItalic(){
-        let [start, end] = getSelectedText();
-        let editedText = val.substring(0, start) + Tags.italicOpen + val.substring(start, end) + Tags.italicClose + val.substring(end);
-        setVal(editedText);
-        props.onChange(editedText);
+        onClick(Tags.italicOpen, Tags.italicClose);
     }
 
     function onUnderlined(){
-        let [start, end] = getSelectedText();
-        let editedText = val.substring(0, start) + Tags.underlineOpen + val.substring(start, end) + Tags.underlineClose + val.substring(end);
-        setVal(editedText);
-        props.onChange(editedText);
+        onClick(Tags.underlineOpen, Tags.underlineClose);
     }
 
     function onCrossed(){
-        let [start, end] = getSelectedText();
-        let editedText = val.substring(0, start) + Tags.crossOpen + val.substring(start, end) + Tags.crossClose + val.substring(end);
-        setVal(editedText);
-        props.onChange(editedText);
+        onClick(Tags.crossOpen, Tags.crossClose);
     }
 
     function onHeader(){
-        let [start, end] = getSelectedText();
-        let editedText = val.substring(0, start) + Tags.headerOpen + val.substring(start, end) + Tags.headerClose + val.substring(end);
-        setVal(editedText);
-        props.onChange(editedText);
+        onClick(Tags.headerOpen, Tags.headerClose);
 
     }
 
     function onCenter(){
-        let [start, end] = getSelectedText();
-        let editedText = val.substring(0, start) + Tags.centerOpen + val.substring(start, end) + Tags.centerClose + val.substring(end);
-        setVal(editedText);
-        props.onChange(editedText);
+        onClick(Tags.centerOpen, Tags.centerClose);
     }
 
     function onRight(){
-        let [start, end] = getSelectedText();
-        let editedText = val.substring(0, start) + '<p align="right">' + val.substring(start, end) + '</p>' + val.substring(end);
-        setVal(editedText);
-        props.onChange(editedText);
+        onClick('<p align="right">', '</p>');
 
     }
 
     function onLeft(){
-        let [start, end] = getSelectedText();
-        let editedText = val.substring(0, start) + '<p align="left">' + val.substring(start, end) + '</p>' + val.substring(end);
-        setVal(editedText);
-        props.onChange(editedText);
+        onClick('<p align="left">', '</p>');
     }
 
     function onList(){
@@ -120,14 +108,6 @@ function CustomTextEditor(props){
         let editedText = val.substring(0, start) + Tags.orderOpen + items + Tags.orderClose + val.substring(end);
         setVal(editedText);
         props.onChange(editedText);
-    }
-
-    function onAddIndent(){
-
-    }
-
-    function onDeleteIndent(){
-
     }
 
     function renderThemedEditor(){
@@ -166,14 +146,6 @@ function CustomTextEditor(props){
 
                     <TextEditorButton onClick={onOrder} >
                         <FormatListNumberedIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
-                    </TextEditorButton>
-
-                    <TextEditorButton onClick={onAddIndent}>
-                        <FormatIndentIncreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
-                    </TextEditorButton>
-
-                    <TextEditorButton onClick={onDeleteIndent}>
-                        <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
                     </TextEditorButton>
 
                     <TextEditorButton onClick={onLeft}>
@@ -225,14 +197,6 @@ function CustomTextEditor(props){
 
                     <TextEditorButton onClick={onOrder} >
                         <FormatListNumberedIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
-                    </TextEditorButton>
-
-                    <TextEditorButton onClick={onAddIndent}>
-                        <FormatIndentIncreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
-                    </TextEditorButton>
-
-                    <TextEditorButton onClick={onDeleteIndent}>
-                        <FormatIndentDecreaseIcon sx={{fontSize: '30px'}} htmlColor="#E8E8E8"/>
                     </TextEditorButton>
 
                     <TextEditorButton onClick={onLeft}>
